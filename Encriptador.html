@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Challenge</title>
+    </head>
+    <body>
+        <div class="contenedor">
+            <div class="logo"> 
+                <img class="logoimg" src="img/Logo.png">
+                <h1 class="title"> Encriptador de Mensajes </h1>
+            </div>
+            <div class="izquierda"> 
+                <input class="text-input" id="inputtexto" type="text" placeholder="Ingrese el texto aqui">
+            </div>
+            <div class="derecha"> 
+                <img src="img/Muñeco.png" id="imgder">
+                <h1 id="texto1">Resultado</h1>
+                <textarea id="texto2" name="name" cols="80" rows="8"> Ningun mensaje fue encontrado</textarea>
+                <button type="button" id="copiar" onclick="copiar()">Copiar</button>
+            </div>
+            <div class="left-button">
+                <p>Solo Minusculas y sin Acentos</p>
+                <button type="button" id="btn-encriptar" onclick="encriptar()">Encriptar</button>
+                <button type="button" id="btn-desencriptar" onclick="desencriptar()">Desencriptar</button>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    function encriptar(){
+        var texto = document. getElementById("inputtexto").value.toLowerCase();
+        var textoCifrado = texto.replace(/e/gim, "enter").replace(/i/gim, "imes").replace(/a/gim, "ai").replace(/o/gim, "ober").replace(/u/gim, "ufat");
+        
+        document.getElementById("imgder").style.display = "none";
+        document.getElementById("texto1").style.display = "none";
+        document.getElementById("texto2").innerHTML = textoCifrado;
+        document.getElementById("copiar").style.display = "show";
+        document.getElementById("copiar").style.display = "inherit";
+    }
+
+    function desencriptar(){
+        var texto = document. getElementById("inputtexto").value.toLowerCase();
+        var textoCifrado = texto.replace(/enter/gim, "e").replace(/imes/gim, "i").replace(/ai/gim, "a").replace(/ober/gim, "o").replace(/ufat/gim, "u");
+        
+        document.getElementById("imgder").style.display = "none";
+        document.getElementById("texto1").style.display = "none";
+        document.getElementById("texto2").innerHTML = textoCifrado;
+        document.getElementById("copiar").style.display = "show";
+        document.getElementById("copiar").style.display = "inherit";
+    }
+
+    function copiar(){
+        var contenido = document.querySelector("#texto2");
+        contenido.select();
+        document.execCommand("copy");
+        alert("Se copió correctamente el texto");
+    }
+
+
+
+
+</script>
